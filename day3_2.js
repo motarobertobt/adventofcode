@@ -12,26 +12,27 @@ const test = [
     "CrZsJsPPZsGzwwsLwLmpwMDw"
 ]
 
+const countLetter = (arr) => {
+    return arr[0].split('').find(f => arr[1].includes(f) && arr[2].includes(f))
+}
+
+
 const calc = () => {
     let score = 0
-    //const input = fs.readFileSync("./testday.txt").toString().split("\r\n")
-    const input = fs.readFileSync("./inputday3.txt").toString().split("\r\n")
+    const found = []
+    let aux = 0
+    const input = fs.readFileSync("./inputday3.txt").toString().split("\r\n")    
+    for (let i = 0; i < input.length; i++) {
+        if(input.slice(aux, aux + 3).length == 0) break
+        found.push(countLetter(input.slice(aux, aux + 3)))        
+        aux += 3
+    }
 
-    let i = 0
-    input.forEach(el => {
 
+    found.forEach(el => {
+        if(el.toString().charCodeAt() >= 65 && el.toString().charCodeAt() <= 90) score += Number(alphabetUpper.indexOf(el)) + Number(1) + Number(26)
+        if(el.toString().charCodeAt() >= 97 && el.toString().charCodeAt() <= 122) score += Number(alphabetLower.indexOf(el)) + Number(1) 
     })
-
-    joined.forEach(el => {
-
-    })
-
-
-
-    // found.forEach(el => {
-    //     if(el.toString().charCodeAt() >= 65 && el.toString().charCodeAt() <= 90) score += Number(alphabetUpper.indexOf(el)) + Number(1) + Number(26)
-    //     if(el.toString().charCodeAt() >= 97 && el.toString().charCodeAt() <= 122) score += Number(alphabetLower.indexOf(el)) + Number(1) 
-    // })
 
     console.log("SCORE", score)
 
