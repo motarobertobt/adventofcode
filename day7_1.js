@@ -67,14 +67,20 @@ const init = () => {
     input.forEach(el => decide(el))
     //console.log("systemDir", JSON.stringify(systemDir))
     console.log(systemDir["/"]
-        .filter(f => f.dir && f.size <= 100000 && f.name != "/")
-        .map(m => ({
-            name: m.name,
-            size: Number(systemDir["/"].filter(s => s.parent == m.name).map( j => j.size)[0]) + Number(m.size)
-        })))
-    // systemDir["/"].reduce((acc, at, index) => {
-
-    // }, 0)
+        .filter(f => f.dir && f.size <= 100000)
+        .map(m => {        
+            // const valid =    
+            
+            return {
+                name: m.name,
+                size: (2 * Number(systemDir["/"].filter(s => s.parent == m.name).map(j => j.size)[0])) + Number(m.size)
+            }
+        })
+        // .reduce((acc, at, index) => {
+        //     if (!at) return acc
+        //     return acc += Number(at.size)
+        // }, 0)
+        )
 
 }
 
