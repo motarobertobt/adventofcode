@@ -10,7 +10,7 @@ let systemDir = {
 
 const listCommand = []
 
-const moveInto = (where) => {    
+const moveInto = (where) => {
     lastCommand({
         command: "cd",
         from: listCommand.slice(0).reverse().find(f => f.command == "cd")?.to || "/",
@@ -44,7 +44,7 @@ const addData = (line) => {
 }
 
 
-const lastCommand = (cmd) => {    
+const lastCommand = (cmd) => {
     listCommand.push(cmd)
 }
 
@@ -65,11 +65,17 @@ const decide = (line) => {
 
 const init = () => {
     input.forEach(el => decide(el))
-    console.log("systemDir", JSON.stringify(systemDir))
-    let x = 0
-    systemDir['/'].forEach((f, i) => {
-                 
-    })
+    //console.log("systemDir", JSON.stringify(systemDir))
+    console.log(systemDir["/"]
+        .filter(f => f.dir && f.size <= 100000 && f.name != "/")
+        .map(m => ({
+            name: m.name,
+            size: Number(systemDir["/"].filter(s => s.parent == m.name).map( j => j.size)[0]) + Number(m.size)
+        })))
+    // systemDir["/"].reduce((acc, at, index) => {
+
+    // }, 0)
+
 }
 
 init()
