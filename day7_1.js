@@ -8,8 +8,6 @@ let systemDir = {
     ]
 }
 
-let sizeOfDir = []
-
 const listCommand = []
 
 const moveInto = (where) => {    
@@ -67,17 +65,11 @@ const decide = (line) => {
 
 const init = () => {
     input.forEach(el => decide(el))
-
     console.log("systemDir", JSON.stringify(systemDir))
-    console.log("systemDir",
-        systemDir["/"]
-            .filter(f => !f.dir && f.size <= 100000)
-            .reduce((acc, at, i, arr) => {
-                return acc += at.size + at.size
-            }, 0))
+    let x = 0
+    systemDir['/'].forEach((f, i) => {
+                 
+    })
 }
-
-
-
 
 init()
