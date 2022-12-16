@@ -60,7 +60,7 @@ const mountCargo = () => {
             cargoSetup[to].push(cargo)
         } else if (move > 1) {
             const cargo = cargoSetup[from].splice(cargoSetup[from].length - move, cargoSetup[from].length)
-            cargoSetup[to] = cargoSetup[to].concat(cargo.reverse())          
+            cargoSetup[to] = cargoSetup[to].concat(cargo)          
         }
     }
     
